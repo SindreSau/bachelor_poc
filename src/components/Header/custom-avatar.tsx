@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import {
     DropdownMenu,
@@ -17,18 +18,18 @@ export default function CustomAvatar({ avatarImageUrl, username }: CustomAvatarP
     return (
         <DropdownMenu>
             <DropdownMenuTrigger>
-                <Avatar>
+                <Avatar className='w-8 h-8'>
                     <AvatarImage src={avatarImageUrl} alt={username} />
                     <AvatarFallback>JD</AvatarFallback>
                 </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuLabel>
+                    <Link href={'/account'}>My Account</Link>
+                </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>Profile</DropdownMenuItem>
                 <DropdownMenuItem>Billing</DropdownMenuItem>
-                <DropdownMenuItem>Team</DropdownMenuItem>
-                <DropdownMenuItem>Subscription</DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
     );

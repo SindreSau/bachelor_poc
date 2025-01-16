@@ -1,3 +1,4 @@
+'use client';
 import {
     Sidebar,
     SidebarContent,
@@ -7,11 +8,21 @@ import {
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
+    useSidebar, // Import the hook from the same place as other sidebar components
 } from '@/components/ui/sidebar';
 import { Separator } from '@radix-ui/react-separator';
 import { navigationLinks } from '@/utils/navigationlinks';
+import Link from 'next/link';
 
 export function AppSidebar() {
+    const { setOpenMobile } = useSidebar(); // Use setOpen instead of setIsOpen
+
+    const handleCloseSidebar = () => {
+        // Only close on mobile
+        console.log('Closing sidebar');
+        setOpenMobile(false);
+    };
+
     return (
         <Sidebar variant='sidebar' collapsible='icon' className='py-1'>
             <SidebarContent>
@@ -22,11 +33,11 @@ export function AppSidebar() {
                         <SidebarMenu>
                             {navigationLinks.map((item) => (
                                 <SidebarMenuItem key={item.title}>
-                                    <SidebarMenuButton asChild>
-                                        <a href={item.url}>
+                                    <SidebarMenuButton onClick={handleCloseSidebar} asChild>
+                                        <Link href={item.url}>
                                             <item.icon />
                                             <span>{item.title}</span>
-                                        </a>
+                                        </Link>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
                             ))}
