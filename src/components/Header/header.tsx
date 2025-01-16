@@ -1,6 +1,7 @@
 'use client';
 
 import { SidebarTrigger } from '../ui/sidebar';
+import CustomAvatar from './custom-avatar';
 import ThemeSwitcher from './theme-switcher';
 
 export const Header = () => {
@@ -10,8 +11,9 @@ export const Header = () => {
             <SidebarTrigger />
 
             {/* RIGHT SIDE OF HEADER */}
-            <div className='flex'>
-                <ThemeSwitcher />
+            <div className='flex gap-2 items-center justify-center'>
+                <ThemeSwitcher className='w-8 h-8' />
+                <CustomAvatar />
             </div>
         </header>
     );

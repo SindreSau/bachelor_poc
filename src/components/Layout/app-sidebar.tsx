@@ -13,7 +13,7 @@ import { navigationLinks } from '@/utils/navigationlinks';
 
 export function AppSidebar() {
     return (
-        <Sidebar className='py-1' collapsible='icon'>
+        <Sidebar variant='sidebar' collapsible='icon' className='py-1'>
             <SidebarContent>
                 <SidebarGroup>
                     <SidebarGroupLabel className='text-lg'>Bachleor POC</SidebarGroupLabel>
