@@ -27,7 +27,7 @@ export function AppSidebar() {
         <Sidebar variant='sidebar' collapsible='icon' className='py-1'>
             <SidebarContent>
                 <SidebarGroup>
-                    <SidebarGroupLabel className='text-lg'>Bachleor POC</SidebarGroupLabel>
+                    <SidebarGroupLabel className='font-bold text-base'>Bachelor POC</SidebarGroupLabel>
                     <Separator className='my-1' />
                     <SidebarGroupContent>
                         <SidebarMenu>
