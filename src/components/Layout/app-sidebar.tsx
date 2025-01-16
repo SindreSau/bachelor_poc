@@ -23,30 +23,29 @@ export function AppSidebar() {
     setOpenMobile(false);
   };
 
-  return (
-    <Sidebar variant="sidebar" collapsible="icon" className="py-1">
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel className="text-lg">
-            Bachelor POC
-          </SidebarGroupLabel>
-          <Separator className="my-1" />
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {navigationLinks.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton onClick={handleCloseSidebar} asChild>
-                    <Link href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-      </SidebarContent>
-    </Sidebar>
-  );
+
+    return (
+        <Sidebar variant='sidebar' collapsible='icon' className='py-1'>
+            <SidebarContent>
+                <SidebarGroup>
+                    <SidebarGroupLabel className='font-bold text-base'>Bachelor POC</SidebarGroupLabel>
+                    <Separator className='my-1' />
+                    <SidebarGroupContent>
+                        <SidebarMenu>
+                            {navigationLinks.map((item) => (
+                                <SidebarMenuItem key={item.title}>
+                                    <SidebarMenuButton onClick={handleCloseSidebar} asChild>
+                                        <Link href={item.url}>
+                                            <item.icon />
+                                            <span>{item.title}</span>
+                                        </Link>
+                                    </SidebarMenuButton>
+                                </SidebarMenuItem>
+                            ))}
+                        </SidebarMenu>
+                    </SidebarGroupContent>
+                </SidebarGroup>
+            </SidebarContent>
+        </Sidebar>
+    );
 }
