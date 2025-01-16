@@ -21,7 +21,7 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-export default function ResumeParser() {
+export default function ResumePreview() {
     const [file, setFile] = useState<File | null>(null);
 
     const form = useForm<FormValues>({
