@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
-import { Sheet, SheetContent } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetDescription, SheetTitle } from '@/components/ui/sheet';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
@@ -156,6 +156,8 @@ const Sidebar = React.forwardRef<
     if (isMobile) {
         return (
             <Sheet open={openMobile} onOpenChange={setOpenMobile} {...props}>
+                <SheetTitle className='sr-only'>Navigation Sidebar</SheetTitle>
+                <SheetDescription className='sr-only'>Sidebar for navigation</SheetDescription>
                 <SheetContent
                     data-sidebar='sidebar'
                     data-mobile='true'
@@ -183,7 +185,7 @@ const Sidebar = React.forwardRef<
             {/* This is what handles the sidebar gap on desktop */}
             <div
                 className={cn(
-                    'duration-200 relative h-svh w-[--sidebar-width] bg-transparent transition-[width] ease-linear',
+                    'duration-100 relative h-svh w-[--sidebar-width] bg-transparent transition-[width] ease-linear',
                     'group-data-[collapsible=offcanvas]:w-0',
                     'group-data-[side=right]:rotate-180',
                     variant === 'floating' || variant === 'inset'
@@ -193,7 +195,7 @@ const Sidebar = React.forwardRef<
             />
             <div
                 className={cn(
-                    'duration-200 fixed inset-y-0 z-10 hidden h-svh w-[--sidebar-width] transition-[left,right,width] ease-linear md:flex',
+                    'duration-100 fixed inset-y-0 z-10 hidden h-svh w-[--sidebar-width] transition-[left,right,width] ease-linear md:flex',
                     side === 'left'
                         ? 'left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]'
                         : 'right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]',
