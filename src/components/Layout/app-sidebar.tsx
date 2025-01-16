@@ -15,11 +15,11 @@ import { navigationLinks } from '@/utils/navigationlinks';
 import Link from 'next/link';
 
 export function AppSidebar() {
-    const { setOpenMobile } = useSidebar(); // Use setOpen instead of setIsOpen
+    const { setOpenMobile, isMobile } = useSidebar(); // Use setOpen instead of setIsOpen
 
     const handleCloseSidebar = () => {
         // Only close on mobile
-        console.log('Closing sidebar');
+        if (!isMobile) return;
         setOpenMobile(false);
     };
 
