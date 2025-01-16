@@ -1,5 +1,3 @@
-import { Home, FileUser } from 'lucide-react';
-
 import {
     Sidebar,
     SidebarContent,
@@ -11,20 +9,7 @@ import {
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { Separator } from '@radix-ui/react-separator';
-
-// Menu items.
-const navigationLinks = [
-    {
-        title: 'Home',
-        url: '/',
-        icon: Home,
-    },
-    {
-        title: 'resume-parser',
-        url: '/resume-parser',
-        icon: FileUser,
-    },
-];
+import { navigationLinks } from '@/utils/navigationlinks';
 
 export function AppSidebar() {
     return (
