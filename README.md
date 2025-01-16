@@ -1,9 +1,17 @@
-## Getting Started
+# Let's start testing awesome libraries!
 
-First, run the development server:
+## How to use
 
-```bash
-pnpm run dev
-```
+1. To start working on a new feature, add a new page as well as a navlink to that page.
+2. If we intend to try multiple libraries for the same feature, we can swap out the navlink with a [Navigation Menu](https://ui.shadcn.com/docs/components/navigation-menu) component.
+3. Feel free to add documentation in the code or here in the README.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## UI Library - shadcn/ui
+
+Includes multiple useful components:
+
+-   Components in general
+-   Charts
+-   Theming
+
+[shacn/ui](https://ui.shadcn.com/docs/components/accordion)
