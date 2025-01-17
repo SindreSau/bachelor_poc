@@ -7,8 +7,8 @@ export const navigationLinks = [
         icon: Home,
     },
     {
-        title: 'Resume preview',
-        url: '/resume-preview',
+        title: 'PDF preview',
+        url: '/pdf-preview',
         icon: FileUser,
     },
 ];

@@ -16,7 +16,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: 'Bachelor POC',
+    title: {
+        template: '%s | Dashboard',
+        default: 'Dashboard', // Fallback title
+    },
     description:
         'A dashboard with "pages" dedicated to testing various libraries and features before implementing them in the main project.',
 };
