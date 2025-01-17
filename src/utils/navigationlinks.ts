@@ -11,4 +11,9 @@ export const navigationLinks = [
         url: '/pdf-preview',
         icon: FileUser,
     },
+    {
+        title: 'PDF validation',
+        url: '/pdf-validation',
+        icon: FileUser,
+    },
 ];

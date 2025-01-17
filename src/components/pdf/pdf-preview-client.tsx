@@ -12,7 +12,12 @@ export default function PdfPreviewClient() {
 
     return (
         <div className='space-y-8'>
-            <PdfUploadForm onFileChange={handleFileChange} />
+            <PdfUploadForm
+                onFileChange={handleFileChange}
+                onSubmit={async () => {
+                    return;
+                }}
+            />
             {file && <PDFPreview file={file} />}
         </div>
     );
