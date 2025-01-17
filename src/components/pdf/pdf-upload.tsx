@@ -18,23 +18,20 @@ const formSchema = z.object({
         .refine((file) => ACCEPTED_FILE_TYPES.includes(file.type), 'Only PDF files are accepted.'),
 });
 
-type FormValues = z.infer<typeof formSchema>;
+export type FormValues = z.infer<typeof formSchema>;
 
 interface PdfUploadFormProps {
     onFileChange: (file: File) => void;
+    onSubmit: (data: FormValues) => void;
 }
 
-export const PdfUploadForm: React.FC<PdfUploadFormProps> = ({ onFileChange }) => {
+export const PdfUploadForm: React.FC<PdfUploadFormProps> = ({ onFileChange, onSubmit }) => {
     const form = useForm<FormValues>({
         resolver: zodResolver(formSchema),
     });
 
     function bytesToMB(bytes: number) {
         return (bytes / 1024 / 1024).toFixed(2);
-    }
-
-    async function onSubmit() {
-        console.log('Submitting form data:', form.getValues());
     }
 
     return (

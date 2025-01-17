@@ -9,8 +9,9 @@ export const metadata: Metadata = {
 
 export default function PdfPreview() {
     return (
-        <div className='space-y-8'>
+        <>
+            <h1>PDF Preview</h1>
             <PdfPreviewClient />
-        </div>
+        </>
     );
 }
