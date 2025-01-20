@@ -5,16 +5,16 @@ import CustomAvatar from './custom-avatar';
 import ThemeSwitcher from './theme-switcher';
 
 export const Header = () => {
-    return (
-        <header className='bg-sidebar/60 py-1 px-2 flex justify-between items-center'>
-            {/* LEFT SIDE OF HEADER */}
-            <SidebarTrigger />
+  return (
+    <header className='flex items-center justify-between bg-sidebar/60 px-2 py-1'>
+      {/* LEFT SIDE OF HEADER */}
+      <SidebarTrigger />
 
-            {/* RIGHT SIDE OF HEADER */}
-            <div className='flex gap-2 items-center justify-center'>
-                <ThemeSwitcher className='w-8 h-8' />
-                <CustomAvatar />
-            </div>
-        </header>
-    );
+      {/* RIGHT SIDE OF HEADER */}
+      <div className='flex items-center justify-center gap-2'>
+        <ThemeSwitcher className='h-8 w-8' />
+        <CustomAvatar />
+      </div>
+    </header>
+  );
 };

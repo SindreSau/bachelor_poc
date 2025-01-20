@@ -5,30 +5,30 @@ import path from 'path';
 import os from 'os';
 
 export default async function validatePdf(file: File) {
-    console.log(file);
-    
-    // As this is on server, temporarily store the file to disk
-    const tempDir = os.tmpdir();
-    const tempFilePath = path.join(tempDir, file.name);
+  console.log(file);
 
-    await fs.writeFile(tempFilePath, Buffer.from(await file.arrayBuffer()));
+  // As this is on server, temporarily store the file to disk
+  const tempDir = os.tmpdir();
+  const tempFilePath = path.join(tempDir, file.name);
 
-    const fileUrl = tempFilePath;
+  await fs.writeFile(tempFilePath, Buffer.from(await file.arrayBuffer()));
 
-    try {
-        const result = await validateFile(fileUrl, {
-            maxSizeInBytes: 5 * 1024 * 1024, // 5MB
-        });
-        console.log(result);
+  const fileUrl = tempFilePath;
 
-        const contentValidation = await validateFileContent(fileUrl);
-        console.log(contentValidation);
-        
-        return result
-    } catch (error) {
-        return {
-            status: false,
-            message: (error as Error).message,
-        };
-    }
+  try {
+    const result = await validateFile(fileUrl, {
+      maxSizeInBytes: 5 * 1024 * 1024, // 5MB
+    });
+    console.log(result);
+
+    const contentValidation = await validateFileContent(fileUrl);
+    console.log(contentValidation);
+
+    return result;
+  } catch (error) {
+    return {
+      status: false,
+      message: (error as Error).message,
+    };
+  }
 }
