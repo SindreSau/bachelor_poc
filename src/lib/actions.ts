@@ -22,7 +22,7 @@ export async function createApplication(formData: FormData) {
     await sql`
     INSERT INTO applications (first_name, last_name)
     VALUES (${firstName}, ${lastName})`;
-
+    
         
     };
 
