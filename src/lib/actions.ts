@@ -2,6 +2,7 @@
 
 import { z } from 'zod';
 import { sql } from '@vercel/postgres';
+import { prisma } from './prisma';
 
 const FormSchema = z.object({
     id: z.string(),
@@ -19,11 +20,13 @@ export async function createApplication(formData: FormData) {
 
     console.log(firstName);
 
-    await sql`
-    INSERT INTO applications (first_name, last_name)
-    VALUES (${firstName}, ${lastName})`;
-    
-        
+    await prisma.application.create({
+        data: {
+            firstName,
+            lastName,
+        }
+    })
+
     };
 
 

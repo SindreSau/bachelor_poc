@@ -21,4 +21,9 @@ export const navigationLinks = [
     url: '/application-form',
     icon: FileUser,
   },
+  {
+    title: 'Dashboard',
+    url: '/dashboard',
+    icon: FileUser,
+  },
 ];

@@ -1,4 +1,4 @@
-import ApplicationForm from "@/components/ui/application-form"
+import ApplicationForm from "@/components/application-form"
 
 export default function Page() {
     async function createApplication(formData: FormData) {
