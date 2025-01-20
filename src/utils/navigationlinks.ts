@@ -16,4 +16,9 @@ export const navigationLinks = [
     url: '/pdf-validation',
     icon: FileUser,
   },
+  {
+    title: 'Application Form',
+    url: '/application-form',
+    icon: FileUser,
+  },
 ];
