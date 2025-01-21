@@ -1,63 +1,55 @@
-'use client'
+'use client';
 
+import { createApplication } from '@/lib/actions';
+import FileUpload from './file-upload';
 
-import { useActionState } from "react";
-import { createApplication } from "@/lib/actions";
+export default function ApplicationForm() {
+  return (
+    <form action={createApplication}>
+      <div className='mb-6 grid gap-6 md:grid-cols-2'>
+        <div>
+          <label
+            htmlFor='firstName'
+            className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'
+          >
+            First name
+          </label>
+          <input
+            type='text'
+            id='firstName'
+            name='firstName'
+            className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'
+            placeholder='John'
+            required
+          />
+        </div>
+        <div>
+          <label
+            htmlFor='lastName'
+            className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'
+          >
+            Last name
+          </label>
+          <input
+            type='text'
+            id='lastName'
+            className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'
+            name='lastName'
+            placeholder='Doe'
+            required
+          />
+        </div>
 
-export default function Form() {
-  
+        <FileUpload/>
 
-return (
-  <div className="min-h-screen flex justify-center items-center bg-black">
-    <form
-      action={createApplication}
-      className="p-6 bg-black shadow-md rounded"
-
-    >
-      <h1 className="text-xl font-bold mb-4">Simple Form</h1>
-
-      <div className="mb-4">
-        <label
-          className="block  text-sm font-bold mb-2"
-          htmlFor="firstName"
-        >
-          First Name
-        </label>
-        <input
-          className="w-full p-2 border rounded"
-          id="firstName"
-          name="firstName"
-          type="text"
-          placeholder="Enter your first name"
-
-        />
-      </div>
-
-      <div className="mb-4">
-        <label
-          className="block  text-sm font-bold mb-2"
-          htmlFor="lastName"
-        >
-          Last Name
-        </label>
-        <input
-          className="w-full p-2 border rounded"
-          id="lastName"
-          name="lastName"
-          type="text"
-          placeholder="Enter your last name"
-
-        />
       </div>
 
       <button
-        type="submit"
-        className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700"
+        type='submit'
+        className='w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto'
       >
         Submit
       </button>
     </form>
-  </div>
-);
-};
-
+  );
+}

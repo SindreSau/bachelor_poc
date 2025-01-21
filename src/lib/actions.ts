@@ -1,7 +1,6 @@
 'use server'
 
 import { z } from 'zod';
-import { sql } from '@vercel/postgres';
 import { prisma } from './prisma';
 
 const FormSchema = z.object({
@@ -13,20 +12,21 @@ const FormSchema = z.object({
 const CreateApplication = FormSchema.omit({ id: true });
 
 export async function createApplication(formData: FormData) {
+
     const { firstName, lastName } = CreateApplication.parse({
         firstName: formData.get('firstName'),
         lastName: formData.get('lastName'),
     });
 
-    console.log(firstName);
+    console.log(firstName, lastName);
 
-    await prisma.application.create({
+   await prisma.application.create({
         data: {
             firstName,
             lastName,
         }
-    })
+    });
 
-    };
+};
 
 
