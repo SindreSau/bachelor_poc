@@ -16,4 +16,9 @@ export const navigationLinks = [
     url: '/pdf-validation',
     icon: FileUser,
   },
+  {
+    title: 'PDF blobstorage',
+    url: '/pdf-blobstorage',
+    icon: FileUser,
+  },
 ];
