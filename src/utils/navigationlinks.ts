@@ -21,4 +21,9 @@ export const navigationLinks = [
     url: '/pdf-blobstorage',
     icon: FileUser,
   },
+  {
+    title: 'Application Form',
+    url: '/application-form',
+    icon: FileUser,
+  },
 ];
