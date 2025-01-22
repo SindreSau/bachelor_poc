@@ -1,6 +1,6 @@
 import React from 'react';
-import PdfPreviewClient from '@/components/pdf/pdf-preview-client';
 import { Metadata } from 'next';
+import PdfPreviewClient from '@/components/pdf/pdf-preview-client';
 
 export const metadata: Metadata = {
   title: 'PDF Preview',

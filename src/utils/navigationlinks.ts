@@ -1,4 +1,4 @@
-import { Home, FileUser } from 'lucide-react';
+import { Home, FileUser, FormInputIcon, UploadCloud, Lock } from 'lucide-react';
 
 export const navigationLinks = [
   {
@@ -14,11 +14,16 @@ export const navigationLinks = [
   {
     title: 'PDF validation',
     url: '/pdf-validation',
-    icon: FileUser,
+    icon: Lock,
+  },
+  {
+    title: 'PDF blobstorage',
+    url: '/pdf-blobstorage',
+    icon: UploadCloud,
   },
   {
     title: 'Application Form',
     url: '/application-form',
-    icon: FileUser,
+    icon: FormInputIcon,
   },
 ];
