@@ -1,19 +1,19 @@
 import ApplicationForm from '@/components/ui/application-form';
 
 export default function Page() {
-  async function createApplication(formData: FormData) {
-    'use server';
+  // async function createApplication(formData: FormData) {
+  //   'use server';
 
-    const rawFormData = {
-      firstName: formData.get('firstName'),
-      lastName: formData.get('lastName'),
-    };
+  //   const rawFormData = {
+  //     firstName: formData.get('firstName'),
+  //     lastName: formData.get('lastName'),
+  //   };
 
-    console.log(rawFormData.firstName);
+  //   console.log(rawFormData.firstName);
 
-    // mutate data
-    // revalidate cache
-  }
+  //   // mutate data
+  //   // revalidate cache
+  // }
 
   return <ApplicationForm />;
 }
