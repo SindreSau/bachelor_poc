@@ -10,7 +10,7 @@ import {
   import { prisma } from "@/lib/prisma";
   
   export default async function ApplicationTable() {
-    const applications = await prisma.application.findMany();
+    const persons = await prisma.person.findMany();
   
     return (
       <Table>
@@ -20,14 +20,16 @@ import {
             <TableHead>ID</TableHead>
             <TableHead>First Name</TableHead>
             <TableHead>Last Name</TableHead>
+            <TableHead>GroupID</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {applications.map((application) => (
-            <TableRow key={application.id}>
-              <TableCell>{application.id}</TableCell>
-              <TableCell>{application.firstName}</TableCell>
-              <TableCell>{application.lastName}</TableCell>
+          {persons.map((person) => (
+            <TableRow key={person.id}>
+              <TableCell>{person.id}</TableCell>
+              <TableCell>{person.firstName}</TableCell>
+              <TableCell>{person.lastName}</TableCell>
+              <TableCell>{person.groupId}</TableCell>
             </TableRow>
           ))}
         </TableBody>
