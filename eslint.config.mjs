@@ -14,6 +14,27 @@ const eslintConfig = [
   {
     ignores: ['node_modules', '.next'],
   },
+  {
+    rules: {
+      'prettier/prettier': [
+        'error',
+        {
+          singleQuote: true,
+          jsxSingleQuote: true,
+          trailingComma: 'es5',
+          printWidth: 100,
+          tabWidth: 2,
+          useTabs: false,
+          semi: true,
+          bracketSpacing: true,
+          arrowParens: 'always',
+          endOfLine: 'lf',
+          bracketSameLine: false,
+          quoteProps: 'as-needed',
+        },
+      ],
+    },
+  },
 ];
 
 export default eslintConfig;
