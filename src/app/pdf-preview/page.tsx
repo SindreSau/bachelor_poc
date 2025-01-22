@@ -1,5 +1,6 @@
 import React from 'react';
 import { Metadata } from 'next';
+import PdfPreviewClient from '@/components/pdf/pdf-preview-client';
 
 export const metadata: Metadata = {
   title: 'PDF Preview',
@@ -10,7 +11,7 @@ export default function PdfPreview() {
   return (
     <>
       <h1>PDF Preview</h1>
-      <PdfPreview />
+      <PdfPreviewClient />
     </>
   );
 }
