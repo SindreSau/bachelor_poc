@@ -1,4 +1,4 @@
-import { Home, FileUser, FormInputIcon, UploadCloud, Lock } from 'lucide-react';
+import { Home, FileUser, FormInputIcon, UploadCloud, Lock, MailIcon } from 'lucide-react';
 
 export const navigationLinks = [
   {
@@ -25,5 +25,11 @@ export const navigationLinks = [
     title: 'Application Form',
     url: '/application-form',
     icon: FormInputIcon,
+  },
+  {
+    // Node mailer
+    title: 'Node mailer',
+    url: '/node-mailer',
+    icon: MailIcon,
   },
 ];
