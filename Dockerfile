@@ -16,6 +16,9 @@ RUN pnpm install
 # Copy the rest of the application code
 COPY . .
 
+# Run the prebuild script to run eslint and prettier
+RUN pnpm run prebuild
+
 # Build the Next.js application
 RUN pnpm run build
 
