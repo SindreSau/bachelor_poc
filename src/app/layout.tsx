@@ -2,8 +2,6 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { Providers } from './providers';
-import { AppSidebar } from '@/components/Layout/app-sidebar';
-import { Header } from '@/components/Header/header';
 import { Toaster } from '@/components/ui/toaster';
 
 const geistSans = Geist({
@@ -19,26 +17,18 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: {
     template: '%s | Dashboard',
-    default: 'Dashboard', // Fallback title
+    default: 'Dashboard',
   },
   description:
     'A dashboard with "pages" dedicated to testing various libraries and features before implementing them in the main project.',
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en' suppressHydrationWarning>
+    <html suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Providers>
-          <AppSidebar />
-          <div className='flex w-full flex-col'>
-            <Header />
-            <main className='container mx-auto w-full flex-grow p-4'>{children}</main>
-          </div>
+          {children}
           <Toaster />
         </Providers>
       </body>

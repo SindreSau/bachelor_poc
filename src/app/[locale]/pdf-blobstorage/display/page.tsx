@@ -1,7 +1,9 @@
 import React from 'react';
 import { Metadata } from 'next';
-import Link from 'next/link';
+// import Link from 'next/link';
 import PdfBlobDisplayClient from '@/components/pdf/pdf-blob-display-client';
+import { Link } from '@/i18n/routing';
+import { getLocale } from 'next-intl/server';
 
 export const metadata: Metadata = {
   title: 'PDF Blobstorage',
@@ -9,6 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function PdfStorageDisplay() {
+  const locale = getLocale();
   return (
     <>
       <h1>Display PDF from Blob storage</h1>
@@ -16,7 +19,7 @@ export default function PdfStorageDisplay() {
         Go back to the page that{' '}
         <Link
           className='mb-4 text-blue-500 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white'
-          href='/pdf-blobstorage'
+          href={`/${locale}/pdf-blobstorage`}
         >
           uploads
         </Link>{' '}
