@@ -15,6 +15,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@/components/ui/button';
 import React from 'react';
+import { useTranslations } from 'next-intl';
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
 const ACCEPTED_FILE_TYPES = ['application/pdf'];
@@ -34,6 +35,8 @@ interface PdfUploadFormProps {
 }
 
 export const PdfUploadForm: React.FC<PdfUploadFormProps> = ({ onFileChange, onSubmit }) => {
+  const t = useTranslations('pdf.upload');
+
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
   });
@@ -41,6 +44,9 @@ export const PdfUploadForm: React.FC<PdfUploadFormProps> = ({ onFileChange, onSu
   function bytesToMB(bytes: number) {
     return (bytes / 1024 / 1024).toFixed(2);
   }
+
+  //   const t = useTranslations('HomePage');
+  // return <h1>{t('title')}</h1>;
 
   return (
     <Form {...form}>
@@ -50,7 +56,7 @@ export const PdfUploadForm: React.FC<PdfUploadFormProps> = ({ onFileChange, onSu
           name='cv'
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Upload CV</FormLabel>
+              <FormLabel>{t('label')}</FormLabel>
               <FormControl>
                 <Input
                   type='file'
@@ -68,13 +74,13 @@ export const PdfUploadForm: React.FC<PdfUploadFormProps> = ({ onFileChange, onSu
                 />
               </FormControl>
               <FormDescription>
-                Please upload your CV in PDF format {`(max ${bytesToMB(MAX_FILE_SIZE)}MB)`}
+                {t('description', { size: bytesToMB(MAX_FILE_SIZE) })}{' '}
               </FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type='submit'>Submit</Button>
+        <Button type='submit'>{t('submit')}</Button>
       </form>
     </Form>
   );

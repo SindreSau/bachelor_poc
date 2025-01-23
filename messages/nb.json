@@ -1,0 +1,23 @@
+{
+  "HomePage": {
+    "title": "Hjemme side",
+    "description": "vi digger denne hjemmesiden"
+  },
+
+  "pdf": {
+    "title": "PDF Forhåndsvisning",
+    "description": "PDF Forhåndsvisning proof of concept",
+    "heading": "PDF Forhåndsvisning",
+    "upload": {
+      "label": "Last opp CV",
+      "description": "Vennligst last opp CV-en din i PDF-format (maks {size}MB)",
+      "submit": "Send inn",
+      "errors": {
+        "fileSize": "Filstørrelsen må være mindre enn 5MB.",
+        "fileType": "Kun PDF-filer er akseptert."
+      }
+    }
+  }
+
+
+}
