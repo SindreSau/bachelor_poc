@@ -6,5 +6,20 @@
 
   "Metadata": {
     "title":"Home Page"
+  },
+
+    "pdf": {
+      "title": "PDF Preview",
+      "description": "PDF Preview proof of concept",
+      "heading": "PDF Preview",
+      "upload": {
+        "label": "Upload CV",
+        "description": "Please upload your CV in PDF format (max {size}MB)",
+        "submit": "Submit",
+        "errors": {
+          "fileSize": "File size must be less than 5MB.",
+          "fileType": "Only PDF files are accepted."
+        }
+      }
+    }
   }
-}
