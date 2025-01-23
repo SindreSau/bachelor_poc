@@ -1,9 +1,8 @@
 {
   "HomePage": {
-    "title": "Hjemme side",
+    "title": "Hjemmeside",
     "description": "vi digger denne hjemmesiden"
   },
-
   "pdf": {
     "title": "PDF Forhåndsvisning",
     "description": "PDF Forhåndsvisning proof of concept",
@@ -18,6 +17,4 @@
       }
     }
   }
-
-
 }
