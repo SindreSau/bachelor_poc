@@ -20,9 +20,6 @@ export default async function CustomAvatar() {
       .map((n) => n[0])
       .join('') || 'TU';
 
-  console.log('avatarImageUrl', avatarImageUrl);
-  console.log('initials', initials);
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -32,8 +29,8 @@ export default async function CustomAvatar() {
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem>
-          <Link href={'/account'}>
+        <DropdownMenuItem className='p-0'>
+          <Link href={'/account'} className='w-full'>
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
           </Link>
         </DropdownMenuItem>

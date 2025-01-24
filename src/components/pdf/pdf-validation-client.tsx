@@ -1,6 +1,6 @@
 'use client';
 
-import validatePdf from '@/app/actions/validate-pdf';
+import validatePdf from '@/app/actions/pdf/validate-pdf';
 import { FormValues, PdfUploadForm } from './pdf-upload';
 
 export default function PdfValidationClient() {
