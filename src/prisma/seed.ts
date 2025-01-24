@@ -37,8 +37,7 @@ async function main() {
   const userData: Prisma.UserCreateInput[] = [
     {
       email: 'superadmin@example.com',
-      firstname: 'Super',
-      lastname: 'Admin',
+      name: 'Super Admin',
       password: sa_password,
       role: {
         connect: {
@@ -48,8 +47,7 @@ async function main() {
     },
     {
       email: 'admin@example.com',
-      firstname: 'User',
-      lastname: 'Admin',
+      name: 'Normal Admin',
       password: a_password,
       role: {
         connect: {

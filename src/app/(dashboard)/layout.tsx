@@ -3,6 +3,8 @@ import { AppSidebar } from '@/components/Layout/app-sidebar';
 import { Header } from '@/components/Header/header';
 import { Toaster } from '@/components/ui/toaster';
 import { SidebarProvider } from '@/components/ui/sidebar';
+import { redirect } from 'next/navigation';
+import { auth } from '@/lib/auth';
 
 export const metadata: Metadata = {
   title: {
@@ -13,11 +15,16 @@ export const metadata: Metadata = {
     'A dashboard with "pages" dedicated to testing various libraries and features before implementing them in the main project.',
 };
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
+  if (!session) {
+    return redirect('/sign-in');
+  }
+
   return (
     <SidebarProvider defaultOpen={true}>
       <AppSidebar />

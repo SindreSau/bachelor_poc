@@ -15,18 +15,19 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useState } from 'react';
-import { signInAction } from '@/app/actions/auth/sign-in';
+import signInAction from '@/app/actions/auth/sign-in';
+import { redirect } from 'next/navigation';
 
 const formSchema = z.object({
   email: z.string().min(1, 'Email is required').email('Invalid email format'),
   password: z.string().min(1, 'Password is required'),
 });
 
-type SignInFormValues = z.infer<typeof formSchema>;
+export type SignInFormValues = z.infer<typeof formSchema>;
 
 export function SignInForm() {
-  const [error, setError] = useState<string | undefined>();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const form = useForm<SignInFormValues>({
     resolver: zodResolver(formSchema),
@@ -37,28 +38,14 @@ export function SignInForm() {
   });
 
   const handleSubmit = async (data: SignInFormValues) => {
-    try {
-      setLoading(true);
-      setError(undefined);
-
-      const result = await signInAction({
-        email: data.email,
-        password: data.password,
-      });
-
-      if (result?.status === 'error') {
-        setError('An error occurred while signing in.');
-        console.error(result.message);
-        return;
-      }
-
-      // Success, redirect
-      // await redirect('/dashboard');
-    } catch (error) {
-      setError(`
-        An error occurred while signing in. Please try again later. ${(error as Error).message}`);
-    } finally {
+    setLoading(true);
+    const result = await signInAction(data);
+    if (result?.error) {
       setLoading(false);
+      setError(result.error);
+    } else {
+      setLoading(false);
+      redirect('/');
     }
   };
 
@@ -72,8 +59,8 @@ export function SignInForm() {
         <Form {...form}>
           <form onSubmit={form.handleSubmit(handleSubmit)} className='space-y-6'>
             {error && (
-              <div className='relative rounded border border-red-400 px-4 py-3 text-red-700'>
-                {error}
+              <div className='rounded-md bg-red-100 p-4 text-red-600'>
+                <p>{error}</p>
               </div>
             )}
             <FormField

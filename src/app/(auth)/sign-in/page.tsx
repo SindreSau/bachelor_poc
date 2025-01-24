@@ -1,6 +1,6 @@
 import { SignInForm } from '@/components/auth/signin-form';
 
-export default function SignInPage() {
+export default async function SignInPage() {
   return (
     <div className='flex min-h-screen flex-col items-center p-4 pt-12 md:pt-24'>
       <div className='mb-8'>

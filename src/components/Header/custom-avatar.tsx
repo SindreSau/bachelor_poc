@@ -8,28 +8,39 @@ import {
   DropdownMenuSeparator,
   DropdownMenuItem,
 } from '../ui/dropdown-menu';
+import { auth } from '@/lib/auth';
+import SignOutButton from '../auth/sign-out-button';
 
-interface CustomAvatarProps {
-  avatarImageUrl?: string;
-  username?: string;
-}
+export default async function CustomAvatar() {
+  const session = await auth();
+  const avatarImageUrl = session?.user?.image || '';
+  const initials =
+    session?.user?.name
+      ?.split(' ')
+      .map((n) => n[0])
+      .join('') || 'TU';
 
-export default function CustomAvatar({ avatarImageUrl, username }: CustomAvatarProps) {
+  console.log('avatarImageUrl', avatarImageUrl);
+  console.log('initials', initials);
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
         <Avatar className='h-8 w-8'>
-          <AvatarImage src={avatarImageUrl} alt={username} />
-          <AvatarFallback>JD</AvatarFallback>
+          <AvatarImage src={avatarImageUrl} alt={initials} />
+          <AvatarFallback>{initials}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuLabel>
-          <Link href={'/account'}>My Account</Link>
-        </DropdownMenuLabel>
+        <DropdownMenuItem>
+          <Link href={'/account'}>
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+          </Link>
+        </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>Profile</DropdownMenuItem>
-        <DropdownMenuItem>Billing</DropdownMenuItem>
+        <DropdownMenuItem>
+          <SignOutButton />
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

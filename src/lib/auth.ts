@@ -1,60 +1,45 @@
-// lib/auth.ts
+import { PrismaAdapter } from '@auth/prisma-adapter';
+import { comparePasswordHash, getUserFromDbByEmail } from '@/utils/auth-functions';
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import bcryptjs from 'bcryptjs';
 import db from './db';
 
-export const {
-  auth,
-  signIn: authSignIn,
-  signOut: authSignOut,
-  handlers,
-} = NextAuth({
+export const { handlers, signIn, signOut, auth } = NextAuth({
+  adapter: PrismaAdapter(db),
+  secret: process.env.AUTH_SECRET,
   session: {
     strategy: 'jwt',
-  },
-  jwt: {
-    maxAge: 60 * 60 * 24 * 1, // 1 day
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+    updateAge: 24 * 60 * 60, // 24 hours
   },
   pages: {
     signIn: '/sign-in',
+    error: '/sign-in',
   },
   providers: [
     CredentialsProvider({
-      name: 'Credentials',
       credentials: {
         email: { label: 'Email', type: 'email' },
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
-        console.log('authorize function called:', credentials);
+        const email = credentials?.email;
+        const password = credentials?.password;
 
-        if (!credentials?.email || !credentials?.password) {
+        if (typeof email !== 'string' || typeof password !== 'string') {
           return null;
         }
 
-        const user = await db.user.findUnique({
-          where: {
-            email: credentials.email,
-          },
-        });
+        const dbUser = await getUserFromDbByEmail(email);
+        if (!dbUser?.password) return null;
 
-        if (!user) {
-          return null;
-        }
-
-        const isPasswordValid = await bcryptjs.compare(credentials.password, user.password);
-
-        if (!isPasswordValid) {
-          return null;
-        }
+        const isMatch = await comparePasswordHash(password, dbUser.password);
+        if (!isMatch) return null;
 
         return {
-          id: user.id,
-          email: user.email,
-          firstname: user.firstname,
-          lastname: user.lastname,
-          roleId: user.roleId,
+          id: dbUser.id,
+          email: dbUser.email,
+          name: dbUser.name,
         };
       },
     }),
