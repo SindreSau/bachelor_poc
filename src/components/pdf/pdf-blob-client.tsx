@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { PdfUploadForm } from '@/components/pdf/pdf-upload';
-import { uploadPdf } from '@/app/server/actions/upload-pdf';
+import { uploadPdf } from '@/app/actions/upload-pdf';
 
 export default function PdfBlobClient() {
   const [file, setFile] = useState<File | null>(null);

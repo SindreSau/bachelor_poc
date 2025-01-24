@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import { PDFPreview } from '@/components/pdf/pdf-viewer';
-import { getBlobPdf, listAllBlobs } from '@/app/server/actions/get-pdf';
-import { deleteByUrl, deleteAll } from '@/app/server/actions/delete-pdf';
+import { getBlobPdf, listAllBlobs } from '@/app/actions/get-pdf';
+import { deleteByUrl, deleteAll } from '@/app/actions/delete-pdf';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {

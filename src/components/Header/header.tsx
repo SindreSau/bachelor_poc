@@ -1,10 +1,13 @@
-'use client';
-
+import { auth } from '@/lib/auth';
 import { SidebarTrigger } from '../ui/sidebar';
 import CustomAvatar from './custom-avatar';
 import ThemeSwitcher from './theme-switcher';
 
-export const Header = () => {
+export const Header = async () => {
+  const session = await auth;
+
+  console.log('session', session);
+
   return (
     <header className='flex items-center justify-between bg-sidebar/60 px-2 py-1'>
       {/* LEFT SIDE OF HEADER */}

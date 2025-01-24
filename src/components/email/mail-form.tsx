@@ -14,7 +14,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@/components/ui/button';
-import { sendEmail } from '@/app/server/actions/send-mail';
+import { sendEmail } from '@/app/actions/send-mail';
 import { useToast } from '@/hooks/use-toast';
 import { useState } from 'react';
 import Spinner from '../general/spinner';
